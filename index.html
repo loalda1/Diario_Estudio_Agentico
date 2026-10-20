@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Diario de Estudio, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img"><path d="M6.5 4.5h11A1.5 1.5 0 0 1 19 6v13.5a.5.5 0 0 1-.78.42L12 16.2l-6.22 3.72A.5.5 0 0 1 5 19.5V6a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M8.5 8.5h7M8.5 11.5h5"/></svg>
+        </span>
+        <span>Diario de Estudio</span>
+      </a>
+      <span class="today-label" id="todayLabel"></span>
+    </header>
+
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Tu progreso, un día a la vez</p>
+        <h1>Haz que estudiar<br><em>cuente.</em></h1>
+        <p class="hero-text">Registra tus sesiones, mantén tu ritmo y celebra cada pequeño avance.</p>
+      </div>
+      <div class="streak-card" aria-live="polite">
+        <div class="streak-stat current-streak">
+          <span class="flame" aria-hidden="true">🔥</span>
+          <div class="streak-number" id="streakNumber">0</div>
+          <div class="streak-caption"><span id="streakWord">días</span> de racha</div>
+          <p id="streakMessage">Empieza hoy</p>
+        </div>
+        <div class="streak-divider" aria-hidden="true"></div>
+        <div class="streak-stat best-streak">
+          <span class="trophy" aria-hidden="true">🏆</span>
+          <div class="best-number" id="bestStreakNumber">0</div>
+          <div class="best-caption"><span id="bestStreakWord">días</span> mejor racha</div>
+        </div>
+        <div class="streak-divider" aria-hidden="true"></div>
+        <div class="streak-stat weekly-total">
+          <span class="clock" aria-hidden="true">⏱️</span>
+          <div class="weekly-number" id="weeklyMinutesNumber">0</div>
+          <div class="weekly-caption">minutos esta semana</div>
+        </div>
+        <div class="streak-divider" aria-hidden="true"></div>
+        <div class="streak-stat monthly-days">
+          <span class="calendar" aria-hidden="true">📅</span>
+          <div class="monthly-number" id="monthlyDaysNumber">0</div>
+          <div class="monthly-caption">días este mes</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel heatmap-panel" aria-labelledby="heatmap-title">
+      <div class="section-heading heatmap-heading">
+        <div>
+          <p class="eyebrow">Tu constancia</p>
+          <h2 id="heatmap-title">Mapa de estudio</h2>
+          <p class="heatmap-intro">Cada casilla muestra cuánto estudiaste en un día durante las últimas 12 semanas.</p>
+        </div>
+      </div>
+      <div class="heatmap-legend" aria-label="Intensidad del estudio">
+        <span class="legend-label">Menos</span>
+        <span class="legend-item"><span class="heatmap-swatch level-none" aria-hidden="true"></span>Sin sesiones</span>
+        <span class="legend-item"><span class="heatmap-swatch level-low" aria-hidden="true"></span>1–30 min</span>
+        <span class="legend-item"><span class="heatmap-swatch level-medium" aria-hidden="true"></span>31–60 min</span>
+        <span class="legend-item"><span class="heatmap-swatch level-high" aria-hidden="true"></span>61–120 min</span>
+        <span class="legend-item"><span class="heatmap-swatch level-maximum" aria-hidden="true"></span>Más de 120 min</span>
+        <span class="legend-label">Más</span>
+      </div>
+      <div id="heatMap" class="heatmap" role="grid" aria-label="Mapa de estudio de las últimas 12 semanas"></div>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel form-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Nuevo registro</p>
+            <h2>¿Qué has estudiado hoy?</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">✦</span>
+        </div>
+        <form id="sessionForm" novalidate>
+          <div class="field">
+            <label for="date">Fecha</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="topic">Tema <span class="required">*</span></label>
+            <input id="topic" name="topic" type="text" placeholder="Ej. Álgebra lineal" maxlength="80" required>
+          </div>
+          <div class="field">
+            <label for="minutes">Minutos <span class="required">*</span></label>
+            <div class="input-with-suffix">
+              <input id="minutes" name="minutes" type="number" min="1" step="1" placeholder="60" required>
+              <span>min</span>
+            </div>
+          </div>
+          <button class="primary-button" type="submit"><span>Guardar sesión</span><span aria-hidden="true">→</span></button>
+          <p class="form-feedback" id="formFeedback" role="status"></p>
+        </form>
+      </div>
+
+      <div class="panel history-panel">
+        <div class="section-heading history-heading">
+          <div>
+            <p class="eyebrow">Tu recorrido</p>
+            <h2>Sesiones recientes</h2>
+          </div>
+          <span class="session-count" id="sessionCount">0 sesiones</span>
+        </div>
+        <div class="session-list" id="sessionList"></div>
+      </div>
+    </section>
+    <footer>Tu diario es privado y se guarda solo en este dispositivo.</footer>
+  </main>
+  <script src="heat-map-logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

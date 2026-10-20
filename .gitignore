@@ -1,0 +1,14 @@
+# Capturas y archivos generados localmente
+captura-diario-estudio-375.png
+
+# Dependencias y salidas habituales
+node_modules/
+coverage/
+dist/
+build/
+
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
