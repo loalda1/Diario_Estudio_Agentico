@@ -21,7 +21,7 @@ aporte.
 - Las skills del proyecto deben quedar directamente en `.agents/skills`, sin crear otra
   carpeta `.agents/skills` dentro.
 ## Próximos pasos
-- Preparado el README profesional para publicar el proyecto como `loalda1/Diario_Estudio_Agentico`, con enfoque en aprendizaje de tecnología agéntica; la captura local queda excluida mediante `.gitignore`.
+- Publicado el repositorio público `https://github.com/loalda1/Diario_Estudio_Agentico` con README profesional centrado en aprendizaje de tecnología agéntica; la captura local queda excluida mediante `.gitignore`.
 - Verificación con Chrome DevTools (02/10/2026): se registraron sesiones de prueba del 30/09, 01/10 y 02/10 en contexto aislado; racha actual y mejor racha mostraron 3. Captura móvil guardada como `captura-diario-estudio-375.png`.
 - La consola mostró un error de seguridad de Chrome asociado a cargar la URL `file:` desde un origen `file:`; no impidió el funcionamiento ni el guardado local.
 - Añadido `docs/constitution.md` con los principios de simplicidad, funcionamiento local, privacidad, fechas, idioma, responsive y verificación del proyecto.
